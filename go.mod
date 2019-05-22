@@ -2,6 +2,7 @@ module github.com/smallnest/go-web-framework-benchmark
 
 require (
 	github.com/Unknwon/com v0.0.0-20190321035513-0fed4efef755 // indirect
+	github.com/aerogo/aero v1.1.17
 	github.com/ant0ine/go-json-rest v3.3.2+incompatible
 	github.com/apex/log v1.1.0 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20180720115003-f9ffefc3facf // indirect
@@ -30,8 +31,6 @@ require (
 	github.com/gocraft/web v0.0.0-20190207150652-9707327fb69b
 	github.com/golang/gddo v0.0.0-20181116215533-9bd4a3295021 // indirect
 	github.com/golang/protobuf v1.3.1 // indirect
-	github.com/google/go-cmp v0.2.0 // indirect
-	github.com/google/uuid v1.1.1 // indirect
 	github.com/gopherjs/gopherjs v0.0.0-20190328170749-bb2674552d8f // indirect
 	github.com/gorilla/mux v1.7.0
 	github.com/gowww/router v0.0.0-20180327195201-5f9c626ef619
@@ -43,7 +42,6 @@ require (
 	github.com/ivpusic/neo v0.3.0
 	github.com/ivpusic/urlregex v0.0.0-20160128000749-4dd86e784405 // indirect
 	github.com/jonboulle/clockwork v0.1.0 // indirect
-	github.com/json-iterator/go v1.1.6 // indirect
 	github.com/julienschmidt/httprouter v1.2.0
 	github.com/kataras/muxie v1.0.7
 	github.com/klauspost/compress v1.4.1 // indirect
@@ -54,11 +52,7 @@ require (
 	github.com/lunny/log v0.0.0-20160921050905-7887c61bf0de
 	github.com/lunny/tango v0.5.5
 	github.com/mailgun/route v0.0.0-20181101151700-58b44163b968
-	github.com/mattn/go-colorable v0.1.1 // indirect
-	github.com/mattn/go-isatty v0.0.7 // indirect
 	github.com/mikespook/possum v0.0.0-20170224044927-56d7ebb6470b
-	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
-	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/mustafaakin/gongular v0.0.0-20171116074631-b899c3c6e795
 	github.com/naoina/denco v0.0.0-20180930074809-8475105a6b4c
 	github.com/nbari/violetear v0.0.0-20180912134303-b8e1276ca190
@@ -79,7 +73,6 @@ require (
 	github.com/sirupsen/logrus v1.4.0 // indirect
 	github.com/smartystreets/assertions v0.0.0-20190215210624-980c5ac6f3ac // indirect
 	github.com/smartystreets/goconvey v0.0.0-20190330032615-68dc04aab96a // indirect
-	github.com/stretchr/testify v1.3.0 // indirect
 	github.com/teambition/gear v1.15.1
 	github.com/tockins/fresh v0.0.0-20181012144221-d8b891ad12e4
 	github.com/ugorji/go/codec v0.0.0-20190320090025-2dc34c0b8780 // indirect
@@ -91,12 +84,12 @@ require (
 	goji.io v2.0.2+incompatible
 	golang.org/x/crypto v0.0.0-20190325154230-a5d413f7728c // indirect
 	golang.org/x/net v0.0.0-20190328230028-74de082e2cca
-	golang.org/x/sys v0.0.0-20190329044733-9eb1bfa1ce65 // indirect
 	gopkg.in/baa.v1 v1.2.32
 	gopkg.in/celrenheit/lion.v1 v1.0.0-20161101201550-7c6ce5d22d64
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 	gopkg.in/go-playground/validator.v8 v8.18.2 // indirect
 	gopkg.in/ini.v1 v1.42.0 // indirect
-	gopkg.in/macaron.v1 v1.3.2
 	gopkg.in/yaml.v2 v2.2.2 // indirect
 )
+
+go 1.13

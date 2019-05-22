@@ -27,7 +27,6 @@ import (
 	// siriscontext "github.com/go-siris/siris/context"
 	"github.com/nbari/violetear"
 	"github.com/urfave/negroni"
-	macaron "gopkg.in/macaron.v1"
 
 	// "github.com/go-gas/gas" // NOTE(@kirilldanshin): gas is 404 now, comment out
 	bxog "github.com/claygod/Bxog"
@@ -36,11 +35,9 @@ import (
 	"github.com/go-playground/lars"
 	"github.com/go-playground/pure"
 	"github.com/go-zoo/bone"
-	tiny "github.com/go101/tinyrouter"
 	"github.com/gocraft/web"
 	"github.com/gorilla/mux"
 	gowwwrouter "github.com/gowww/router"
-	"github.com/gramework/gramework"
 	"github.com/ivpusic/neo"
 	"github.com/julienschmidt/httprouter"
 	echov3 "github.com/labstack/echo"
@@ -61,6 +58,7 @@ import (
 	tigertonic "github.com/rcrowley/go-tigertonic"
 	"github.com/teambition/gear"
 	"github.com/tockins/fresh"
+	"github.com/aerogo/aero"
 	"github.com/valyala/fasthttp"
 	"github.com/vanng822/r2router"
 	goji "goji.io"
@@ -119,6 +117,8 @@ func main() {
 		startDefaultMux()
 	// case "ace":
 	// 	startAce()
+	case "aero":
+		startAero()
 	case "atreugo":
 		startAtreugo()
 	case "baa":
@@ -169,8 +169,6 @@ func main() {
 		startGoozzo()
 	case "gowww":
 		startGowww()
-	case "gramework":
-		startGramework()
 	case "httprouter":
 		startHTTPRouter()
 	case "httptreemux":
@@ -179,8 +177,6 @@ func main() {
 		startLars()
 	case "lion":
 		startLion()
-	case "macaron":
-		startMacaron()
 	case "martini":
 		startMartini()
 	case "muxie":
@@ -203,8 +199,6 @@ func main() {
 		startTango()
 	case "tiger":
 		startTigerTonic()
-	case "tinyrouter":
-		startTinyRouter()
 	case "traffic":
 		startTraffic()
 	case "violetear":
@@ -249,6 +243,28 @@ func startDefaultMux() {
 // 	mux.GET("/hello", aceHandler)
 // 	mux.Run(":" + strconv.Itoa(port))
 // }
+
+// aero
+func aeroHandler(ctx *aero.Context) string {
+	if cpuBound {
+		pow(target)
+	} else {
+
+		if sleepTime > 0 {
+			time.Sleep(sleepTimeDuration)
+		} else {
+			runtime.Gosched()
+		}
+	}
+	return ctx.Text(messageStr)
+}
+
+func startAero() {
+	app := aero.New()
+	app.Config.Ports.HTTP = port
+	app.Get("/hello", aeroHandler)
+	app.Run()
+}
 
 // atreugo
 func atreugoHandler(ctx *atreugo.RequestCtx) error {
@@ -725,29 +741,6 @@ func startGowww() {
 
 }
 
-// Gramework
-func grameworkHandler(ctx *gramework.Context) {
-	if cpuBound {
-		pow(target)
-	} else {
-
-		if sleepTime > 0 {
-			time.Sleep(sleepTimeDuration)
-		} else {
-			runtime.Gosched()
-		}
-	}
-
-	ctx.WriteString(messageStr)
-}
-
-func startGramework() {
-	gramework.SetEnv(gramework.PROD) // equivalent of ENV=prod
-	app := gramework.New()
-	app.GET("/hello", grameworkHandler)
-	app.ListenAndServe(":" + strconv.Itoa(port))
-}
-
 // httprouter
 func httpRouterHandler(w http.ResponseWriter, _ *http.Request, ps httprouter.Params) {
 	if cpuBound {
@@ -826,26 +819,6 @@ func startLion() {
 	mux := lion.New()
 	mux.GetFunc("/hello", lionHandler)
 	mux.Run(":" + strconv.Itoa(port))
-}
-
-// Macaron
-func macaronHandler(c *macaron.Context) string {
-	if cpuBound {
-		pow(target)
-	} else {
-
-		if sleepTime > 0 {
-			time.Sleep(sleepTimeDuration)
-		} else {
-			runtime.Gosched()
-		}
-	}
-	return messageStr
-}
-func startMacaron() {
-	mux := macaron.New()
-	mux.Get("/hello", macaronHandler)
-	http.ListenAndServe(":"+strconv.Itoa(port), mux)
 }
 
 // Martini
@@ -1009,18 +982,6 @@ func startTigerTonic() {
 	mux := tigertonic.NewTrieServeMux()
 	mux.Handle("GET", "/hello", http.HandlerFunc(helloHandler))
 	http.ListenAndServe(":"+strconv.Itoa(port), mux)
-}
-
-//  TinyRouter
-func startTinyRouter() {
-	routes := []tiny.Route{
-		{
-			Method:     "GET",
-			Pattern:    "/hello",
-			HandleFunc: helloHandler,
-		}}
-	router := tiny.New(tiny.Config{Routes: routes})
-	http.ListenAndServe(":"+strconv.Itoa(port), router)
 }
 
 //  traffic
